@@ -1,0 +1,48 @@
+version: "3.7"
+
+services:
+  dynamo-db-api-dev:
+    container_name: dynamo-db-api-dev
+    image: dynamo-db-api-dev:0.1.0
+    build:
+      context: ..
+      target: development
+      dockerfile: docker/Dockerfile
+    command: npm run start:dev
+    ports:
+      - 5000:3000
+    environment:
+      - NODE_ENV=dev
+      - APP_TITLE=DynamoDB API
+      - APP_DESCRIPTION=NodeJS API using Dynamo DB
+      - APP_VERSION=0.1.0
+    volumes:
+      - ..:/usr/src/app
+      - /usr/src/app/node_modules
+    networks:
+      - dynamo-db-api
+
+  dynamo-db-api-prod:
+    container_name: dynamo-db-api-prod
+    image: dynamo-db-api-prod:0.1.0
+    build:
+      context: ..
+      target: production
+      dockerfile: docker/Dockerfile
+    command: npm run start:prod
+    ports:
+      - 4200:3000
+    environment:
+      - NODE_ENV=prod
+      - APP_TITLE=DynamoDB API
+      - APP_DESCRIPTION=NodeJS API using Dynamo DB
+      - APP_VERSION=0.1.0
+    volumes:
+      - ..:/usr/src/app
+      - /usr/src/app/node_modules
+    networks:
+      - dynamo-db-api
+
+networks:
+  dynamo-db-api:
+    external: true

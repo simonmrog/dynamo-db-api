@@ -1,0 +1,46 @@
+{
+  "name": "dynamo-db-api",
+  "version": "0.1.0",
+  "description": "NodeJS API using Dynamo DB",
+  "main": "app/index.js",
+  "type": "module",
+  "scripts": {
+    "start:dev": "nodemon app/index.js",
+    "start:prod": "node app/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "init:husky": "husky install && sudo chmod -R 777 .husky && npx husky add .husky/pre-commit \"npx lint-staged\"",
+    "prettier:check": "prettier --config .prettierrc --check \"app/**/*.{js,css,html}\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simonmrog/dynamo-db-api.git"
+  },
+  "author": "Simón Murillo Gómez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/simonmrog/dynamo-db-api/issues"
+  },
+  "homepage": "https://github.com/simonmrog/dynamo-db-api#readme",
+  "dependencies": {
+    "@hapi/boom": "^9.1.4",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "dynamoose": "^2.8.5",
+    "express": "^4.17.3",
+    "joi": "^17.6.0",
+    "morgan": "^1.10.0",
+    "swagger-ui-express": "^4.3.0",
+    "winston": "^3.6.0"
+  },
+  "devDependencies": {
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.7",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.6.0"
+  },
+  "lint-staged": {
+    "app/**/*.{js,css,html}": [
+      "npm run prettier:check"
+    ]
+  }
+}
