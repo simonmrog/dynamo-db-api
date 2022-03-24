@@ -9,17 +9,9 @@ services:
       target: development
       dockerfile: docker/Dockerfile
     command: npm run start:dev
+    env_file: ./.env.dev
     ports:
       - 5000:80
-    environment:
-      - NODE_ENV=dev
-      - APP_TITLE=DynamoDB API
-      - APP_DESCRIPTION=NodeJS API using Dynamo DB
-      - APP_VERSION=0.1.0
-      - AWS_ACCESS_KEY_ID=AKIAWW34FLHYMJ5LMKBP
-      - AWS_ACCESS_KEY_SECRET=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
-      - AWS_REGION=us-east-1
-      - AWS_URL=http://dynamodb-local:8000
     volumes:
       - ..:/usr/src/app
       - /usr/src/app/node_modules
@@ -36,16 +28,9 @@ services:
       target: production
       dockerfile: docker/Dockerfile
     command: npm run start:prod
+    env_file: ./.env.prod
     ports:
       - 4200:80
-    environment:
-      - NODE_ENV=prod
-      - APP_TITLE=DynamoDB API
-      - APP_DESCRIPTION=NodeJS API using Dynamo DB
-      - APP_VERSION=0.1.0
-      - AWS_ACCESS_KEY_ID=AKIAWW34FLHYMJ5LMKBP
-      - AWS_ACCESS_KEY_SECRET=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
-      - AWS_REGION=us-east-1
     volumes:
       - ..:/usr/src/app
       - /usr/src/app/node_modules
