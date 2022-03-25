@@ -3,11 +3,11 @@
 import express from "express";
 import cors from "cors";
 import morgan from "morgan";
-// import swaggerUI from "swagger-ui-express";
+import swaggerUI from "swagger-ui-express";
 
 import log from "./logger.js";
 import config from "./config.js";
-// import docs from "./docs/index.js";
+import docs from "./docs/index.js";
 import { initDB } from "./database.js";
 import routes from "./routes/index.js";
 import errorHandler from "./utils/middlewares/error.js";
@@ -31,7 +31,7 @@ function initApplication() {
     app.use("/api", routes);
 
     // Swagger documentation
-    // app.use("/docs", swaggerUI.serve, swaggerUI.setup(docs));
+    app.use("/docs", swaggerUI.serve, swaggerUI.setup(docs));
 
     // Error handler
     app.use(errorHandler.boomErrorHandler);
