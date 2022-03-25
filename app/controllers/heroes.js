@@ -2,7 +2,7 @@
 
 import boom from "@hapi/boom";
 
-import heroService from "../services/hero.js";
+import heroService from "../services/heroes.js";
 
 class HeroController {
   async getAll(req, res, next) {

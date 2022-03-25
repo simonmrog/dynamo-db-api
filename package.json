@@ -27,6 +27,7 @@
     "dotenv": "^16.0.0",
     "dynamoose": "^2.8.5",
     "express": "^4.17.3",
+    "flat": "^5.0.2",
     "joi": "^17.6.0",
     "morgan": "^1.10.0",
     "swagger-ui-express": "^4.3.0",

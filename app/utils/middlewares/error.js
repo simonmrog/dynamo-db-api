@@ -25,7 +25,7 @@ class ErrorHandler {
     }
 
     // Verify if is mongoose validation
-    if (err.message.includes("validation")) err.statusCode = 422;
+    if (err.message.includes("validation")) err.statusCode = 400;
 
     // Unknown error or internal server error
     if (!err.statusCode) {
