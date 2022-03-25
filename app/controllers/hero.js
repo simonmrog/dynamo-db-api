@@ -41,6 +41,8 @@ class HeroController {
     try {
       const { id } = req.params;
       const payload = req.body;
+      const heroInDB = await heroService.getById(id);
+      if (!heroInDB) throw boom.notFound("Hero not found");
       const updatedHero = await heroService.update(id, payload);
       if (!updatedHero) throw boom.internal("Could not update hero");
       res.status(200).json(updatedHero);
@@ -52,8 +54,10 @@ class HeroController {
   async delete(req, res, next) {
     try {
       const { id } = req.params;
+      const heroInDB = await heroService.getById(id);
+      if (!heroInDB) throw boom.notFound("Hero not found");
       await heroService.delete(id);
-      res.status(204);
+      res.status(204).send();
     } catch (err) {
       next(err);
     }

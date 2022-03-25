@@ -6,7 +6,7 @@ class HealthController {
   async getAll(req, res, next) {
     try {
       const healthStatus = {
-        env: config.NODE_ENV,
+        environment: config.NODE_ENV,
         title: config.APP_TITLE,
         description: config.APP_DESCRIPTION,
         version: config.APP_VERSION,
