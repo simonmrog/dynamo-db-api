@@ -5,7 +5,7 @@ export default class BaseService {
     this.model = model;
   }
 
-  async getAll(limit = 9999, filter = {}) {
+  async getAll(limit = 100, filter = {}) {
     const records = await this.model.scan(filter).limit(limit).exec();
     return records;
   }
