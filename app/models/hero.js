@@ -17,7 +17,12 @@ const HeroSchema = new dynamoose.Schema(
       },
     },
   },
-  { timestamps: true },
+  {
+    timestamps: {
+      createdAt: "createdAt",
+      updatedAt: "lastModified",
+    },
+  },
 );
 
 const HeroModel = dynamoose.model("Heroes", HeroSchema, { create: true });
