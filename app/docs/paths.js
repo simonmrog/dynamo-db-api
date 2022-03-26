@@ -8,7 +8,7 @@ import {
   updateHero,
   deleteHero,
 } from "./routes/heroes.js";
-import { getReportFile } from "./routes/reports.js";
+import { getXlsxReportFile, getPdfReportFile } from "./routes/reports.js";
 
 export default {
   paths: {
@@ -24,8 +24,11 @@ export default {
       ...updateHero,
       ...deleteHero,
     },
-    "/api/reports": {
-      ...getReportFile,
+    "/api/reports/xlsx": {
+      ...getXlsxReportFile,
+    },
+    "/api/reports/pdf": {
+      ...getPdfReportFile,
     },
   },
 };
