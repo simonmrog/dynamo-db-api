@@ -21,18 +21,14 @@ class ReportController {
     }
   }
 
-  async getPdfReportFile(req, res, next) {
+  async getHTMLReportFile(req, res, next) {
     try {
       let { limit } = req.query;
       const heroesList = await heroService.getAll(limit);
       if (!heroesList || heroesList.length == 0)
         throw boom.badData("No data to generate the file");
-      const report = await reportService.pdfReport(heroesList, "heroes");
-      res.writeHead(200, {
-        "Content-Type": "application/pdf",
-        "Content-disposition": `attachment; filename=heroes.pdf`,
-      });
-      res.end(report);
+      const report = await reportService.htmlReport(heroesList, "heroes");
+      res.send(report);
     } catch (err) {
       next(err);
     }

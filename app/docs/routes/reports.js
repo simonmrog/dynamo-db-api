@@ -33,11 +33,11 @@ export const getXlsxReportFile = {
   },
 };
 
-export const getPdfReportFile = {
+export const getHTMLReportFile = {
   get: {
     tags: ["Reports"],
-    description: "Get report file in PDF",
-    operationId: "getPdfReportFile",
+    description: "Get report file in HTML",
+    operationId: "getHTMLReportFile",
     parameters: [
       {
         name: "limit",
@@ -53,10 +53,9 @@ export const getPdfReportFile = {
       200: {
         description: "Report generated successfully",
         content: {
-          "application/pdf": {
+          "text/html": {
             schema: {
               type: "string",
-              format: "binary",
             },
           },
         },

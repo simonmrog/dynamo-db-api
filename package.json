@@ -7,7 +7,7 @@
   "scripts": {
     "start:dev": "nodemon app/index.js",
     "start:prod": "node app/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "init:husky": "husky install && sudo chmod -R 777 .husky && npx husky add .husky/pre-commit \"npx lint-staged\"",
     "prettier:check": "prettier --config .prettierrc --check \"app/**/*.{js,css,html}\""
   },
@@ -31,6 +31,7 @@
     "html-pdf": "^3.0.1",
     "joi": "^17.6.0",
     "morgan": "^1.10.0",
+    "nock": "^13.2.4",
     "pdfmake": "^0.2.4",
     "swagger-ui-express": "^4.3.0",
     "uuid": "^8.3.2",
@@ -39,9 +40,12 @@
   },
   "devDependencies": {
     "husky": "^7.0.4",
+    "jest": "^27.5.1",
     "lint-staged": "^12.3.7",
     "nodemon": "^2.0.15",
-    "prettier": "^2.6.0"
+    "prettier": "^2.6.0",
+    "supertest": "^6.2.2",
+    "supertest-session": "^4.1.0"
   },
   "lint-staged": {
     "app/**/*.{js,css,html}": [

@@ -5,6 +5,6 @@ import reportsController from "../controllers/reports.js";
 const router = Router();
 
 router.get("/xlsx", reportsController.getXlsxReportFile);
-router.get("/pdf", reportsController.getPdfReportFile);
+router.get("/html", reportsController.getHTMLReportFile);
 
 export default router;
